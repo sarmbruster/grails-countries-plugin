@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$USER_HOME_GRAILS$/1.3.4.BUILD-SNAPSHOT/projects/countries/plugins/hibernate-1.3.4.BUILD-SNAPSHOT" />
+    <content url="file://$USER_HOME_GRAILS$/1.3.4.BUILD-SNAPSHOT/projects/countries/plugins/tomcat-1.3.4.BUILD-SNAPSHOT">
+      <sourceFolder url="file://$USER_HOME_GRAILS$/1.3.4.BUILD-SNAPSHOT/projects/countries/plugins/tomcat-1.3.4.BUILD-SNAPSHOT/src/groovy" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="Grails 1.3.4.BUILD-SNAPSHOT" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library name="Grails User Library">
+        <CLASSES>
+          <root url="file://$USER_HOME_GRAILS$/1.3.4.BUILD-SNAPSHOT/projects/countries/plugins/tomcat-1.3.4.BUILD-SNAPSHOT/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME_GRAILS$/1.3.4.BUILD-SNAPSHOT/projects/countries/plugins/tomcat-1.3.4.BUILD-SNAPSHOT/lib" recursive="false" />
+      </library>
+    </orderEntry>
+  </component>
+</module>
+
