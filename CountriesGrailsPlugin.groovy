@@ -1,3 +1,6 @@
+import org.codehaus.groovy.grails.plugins.neo4j.Continent
+import grails.plugins.countries.Country
+
 class CountriesGrailsPlugin {
     // the plugin version
     def version = "0.1"
@@ -11,11 +14,14 @@ class CountriesGrailsPlugin {
     ]
 
     // TODO Fill in these fields
-    def author = "Your name"
-    def authorEmail = ""
-    def title = "Plugin summary/headline"
+    def author = "Stefan Armbruster"
+    def authorEmail = "stefan.armbruster@netjay.de"
+    def title = "Plugins to deal with contries and continents"
     def description = '''\\
-Brief description of the plugin.
+The countries plugins provides:
+* populated domains classes for countries and continents
+* i18n files for countries and continents, for now only in en and de, other contributions are welcome
+* taglib
 '''
 
     // URL to the plugin's documentation
@@ -35,6 +41,8 @@ Brief description of the plugin.
 
     def doWithApplicationContext = { applicationContext ->
         // TODO Implement post initialization spring config (optional)
+
+
     }
 
     def onChange = { event ->
@@ -47,4 +55,5 @@ Brief description of the plugin.
         // TODO Implement code that is executed when the project configuration changes.
         // The event is the same as for 'onChange'.
     }
+
 }
