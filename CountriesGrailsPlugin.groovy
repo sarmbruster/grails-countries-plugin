@@ -1,5 +1,3 @@
-import org.codehaus.groovy.grails.plugins.neo4j.Continent
-import grails.plugins.countries.Country
 
 class CountriesGrailsPlugin {
     // the plugin version

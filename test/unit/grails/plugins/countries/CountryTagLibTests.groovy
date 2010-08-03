@@ -43,9 +43,8 @@ class CountryTagLibTests extends TagLibUnitTestCase {
         tagLib.select([:])
 
         String out = tagLib.out.toString()
-        assertTrue out.contains("1:country.abc")
-        assertTrue out.contains("2:country.abccountry.def") //TODO: change to 2:country.def when   http://jira.codehaus.org/browse/GRAILS-6267 is fixed
-
+        assert out =~ /2:.*country.def/
+        assert out =~ /1:.*country.abc/ //TODO: change to 2:country.def when   http://jira.codehaus.org/browse/GRAILS-6267 is fixed
     }
 
     void testSelectCountriesFromContinent() {
@@ -68,8 +67,8 @@ class CountryTagLibTests extends TagLibUnitTestCase {
         tagLib.select([from:continent1])
 
         String out = tagLib.out
-        assertTrue out.contains("2:country.def")
-        assertTrue out.contains("1:country.defcountry.abc") //TODO: change to 2:country.def when   http://jira.codehaus.org/browse/GRAILS-6267 is fixed
+        assert out =~ /2:.*country.def/
+        assert out =~ /1:.*country.abc/ //TODO: change to 2:country.def when   http://jira.codehaus.org/browse/GRAILS-6267 is fixed
         assertFalse  out.contains("gih")
 
     }
@@ -86,8 +85,7 @@ class CountryTagLibTests extends TagLibUnitTestCase {
         tagLib.selectContinent([:])
 
         String out = tagLib.out
-        assertTrue out.contains("1:continent.abc")
-        assertTrue out.contains("2:continent.abccontinent.def") //TODO: change to 2:country.def when   http://jira.codehaus.org/browse/GRAILS-6267 is fixed
-
+        assert out =~ /2:.*continent.def/
+        assert out =~ /1:.*continent.abc/ //TODO: change to 2:country.def when   http://jira.codehaus.org/browse/GRAILS-6267 is fixed
     }
 }
