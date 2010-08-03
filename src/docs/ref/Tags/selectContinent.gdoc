@@ -1,0 +1,27 @@
+h1. select 
+
+h2. Purpose
+
+Provide select box populated with list of all continents
+
+h2. Examples
+
+{code:xml}
+// select from all continents
+<country:selectContinent name="continent.id" noSelection="['':'-Choose your age-']"/>
+
+{code}
+
+h2. Description
+
+Attributes
+
+* @locale@ (optional) - the locale to be used for displaying country/continent names, defaults to the locale of current request
+* see other parameters of the <g:select> tag
+
+h2. Source
+
+{source:tag=CountryTagLib.selectContinent}
+{source}
+
+

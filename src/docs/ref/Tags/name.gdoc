@@ -1,0 +1,29 @@
+h1. name 
+
+h2. Purpose
+
+print the localized name of a country or continent
+
+h2. Examples
+
+{code:xml}
+// get the localized name of a country
+<country:name object="${country}"/>
+
+// get the localized name of a continent
+<country:name object="${continent}"/>
+{code}
+
+h2. Description
+
+Attributes
+
+* @object@ (required) - Either a instance of {{Country}} or {{Continent}}.
+* @locale@ (optional) - The locale used to get the country/continent's name, defaults to the locale of the current request
+
+h2. Source
+
+{source:tag=CountryTagLib.name}
+{source}
+
+

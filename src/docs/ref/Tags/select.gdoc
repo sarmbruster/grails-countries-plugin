@@ -1,0 +1,36 @@
+h1. select 
+
+h2. Purpose
+
+Provide select box populated with list of countries or continents
+
+h2. Examples
+
+{code:xml}
+// select from all countries
+<country:select name="country.id" noSelection="['':'-Choose your age-']"/>
+
+// all countries from Europe:   
+<country:select name="country.id" from="${grails.plugins.countries.Continent.findByKey('eur')}"/> 
+
+// from specifc countries: 'list' is a list of countries
+<country:select name="country.id" from="${list}"/> 
+
+{code}
+
+h2. Description
+
+The contents of the select box are displayed in the requested locale and sorted by the localized names of the continents/countries.
+
+Attributes
+
+* @from@ (optional) - a list of countries to select from or a continent, then all countries of this continents is used. If not provided, all available countries are used.
+* @locale@ (optional) - the locale to be used for displaying country/continent names, defaults to the locale of current request
+* see other parameters of the <g:select> tag
+
+h2. Source
+
+{source:tag=CountryTagLib.select}
+{source}
+
+
