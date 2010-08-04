@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <title>countries 0.1 - Reference Documentation</title>
+        <link rel="stylesheet" href="../../css/ref.css" type="text/css" media="screen" title="Ref" charset="utf-8"/>
+    </head>
+    <body class="body">
+    <h1>name </h1><p class="paragraph"/><h2>Purpose</h2><p class="paragraph"/>print the localized name of a country or continent<p class="paragraph"/><h2>Examples</h2><p class="paragraph"/><div class="code"><pre>// get the localized name of a country
+<span class="xml&#45;tag">&#60;country:name object=<span class="xml&#45;quote">"$&#123;country&#125;"</span>/&#62;</span><p class="paragraph"/>// get the localized name of a continent
+<span class="xml&#45;tag">&#60;country:name object=<span class="xml&#45;quote">"$&#123;continent&#125;"</span>/&#62;</span></pre></div><p class="paragraph"/><h2>Description</h2><p class="paragraph"/>Attributes
+<ul class="star">
+<li><code>object</code> (required) - Either a instance of {{Country}} or {{Continent}}.</li>
+<li><code>locale</code> (optional) - The locale used to get the country/continent's name, defaults to the locale of the current request</li>
+</ul><p class="paragraph"/><h2>Source</h2><p class="paragraph"/>{source:tag=CountryTagLib.name}
+{source}<p class="paragraph"/>
+
+    </body>
+</html>
