@@ -216,7 +216,7 @@ class CountriesBootStrap {
 ["860",".uz","Usbekistan","Uzbekistan","Republic of Uzbekistan","UZ","UZB","Tashkent","asa"],
 ["548",".vu","Vanuatu","Vanuatu","Republic of Vanuatu","VU","VAN","Port-Vila","aus"],
 ["862",".ve","Venezuela","Venezuela","Republic of Venezuela","VE","VEN","Caracas","sam"],
-["704",".vn","Vietnam","Vietnam","Socialist Republic of Vietnam","VN","VIE","Hanoi","asa"],
+["704",".vn","Vietnam","Vietnam","Socialist Republic of Vietnam","VN","VNM","Hanoi","asa"],
 ["887",".ye","Jemen","Yemen","Republic of Yemen","YE","YEM","Sanaa","asa"],
 ["894",".zm","Sambia","Zambia","Republic of Zambia","ZM","ZAM","Lusaka","afa"],
 ["716",".zw","Simbabwe","Zimbabwe","Republic of Zimbabwe","ZW","ZIM","Harare","afa"],
