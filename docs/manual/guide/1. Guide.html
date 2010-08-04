@@ -21,7 +21,7 @@ A common requirement in many applications is to deal with countries and/or conti
 <li>provide templates for scaffolding</li>
 </ol><p class="paragraph"/>The plugin is licensend under the <a href="http://sam.zoy.org/wtfpl/" target="blank">WTFPL</a>.<p class="paragraph"/><h2>Installation</h2><p class="paragraph"/>Installation is done like every other plugin:
 <div class="code"><pre>grails install&#45;plugin countries</pre></div><p class="paragraph"/>When starting up the application, the Country and Continent domain classes are populated during the bootstrapping process.<p class="paragraph"/><h2>Domain classes</h2>
-The plugin contains two domain classes {{grails.plugin.countries.Country}} and {{grails.plugin.countries.Continent}}. The are related to each other with a bidirectional 1:n relation, so each continent has multiple countries and each country refers to one continent. The Country domain class holds the 2- and 3 letter codes of ISO 3166 as well as the name of country's capital. N.B. the country name itself is not stored in the domain class but is available in i18n properties files by following the convention {{country.&#60;3 letter code&#62;}}. So when e.g. lookup up localized names for Germany, you have to use property {{country.GER}}. The same applies for continents. Since there seems no standard abbreviation for continents the plugin uses:
+The plugin contains two domain classes <code>grails.plugin.countries.Country</code> and <code>grails.plugin.countries.Continent</code>. The are related to each other with a bidirectional 1:n relation, so each continent has multiple countries and each country refers to one continent. The Country domain class holds the 2- and 3 letter codes of ISO 3166 as well as the name of country's capital. N.B. the country name itself is not stored in the domain class but is available in i18n properties files by following the convention <code>country.&#60;3 letter code&#62;</code>. So when e.g. lookup up localized names for Germany, you have to use property <code>country.GER</code>. The same applies for continents. Since there seems no standard abbreviation for continents the plugin uses:
 <ol>
 <li>afa: Afrika</li>
 <li>asa: Asia</li>
@@ -34,16 +34,15 @@ The plugin contains two domain classes {{grails.plugin.countries.Country}} and {
 The author cannot assure that the country data is 100% accurate. If a country is missing in the list, or any errors are found, please file a JIRA.
 </blockquote><p class="paragraph"/><h2>TagLib</h2>
 The plugin comes with a taglib providing easy access to localized filenames and for country/continent related select boxes. For details, see the tag description in the left hand frame.<p class="paragraph"/><h2>Example</h2>
-This short example demonstrates the usage and the capabilities of the plugin. It is assumed that you have created some grails project. A domain class {{Address}} uses {{Country}} :
-<div class="code"><pre><div class="error">code: null</div>class Address {
+This short example demonstrates the usage and the capabilities of the plugin. It is assumed that you have created some grails project. A domain class <code>Address</code> uses <code>Country</code> :
+<div class="code"><pre>class Address &#123;
 	String street
 	String no
 	String zip
 	String city
 	String state
 	Country country
-}
-<div class="code"><pre><div class="error">code: null</div><p class="paragraph"/>Assume a gsp used for creating address labels, the controller exposes a {{Address}} instance using {{address}}:<p class="paragraph"/><div class="code"><pre>Placeholder <span class="java&#45;keyword">for</span> name
+&#125;</pre></div><p class="paragraph"/>Assume a gsp used for creating address labels, the controller exposes a <code>Address</code> instance using <code>address</code>:<p class="paragraph"/><div class="code"><pre>Placeholder <span class="java&#45;keyword">for</span> name
 $&#123;address.street&#125; $&#123;address.no&#125;
 $&#123;address.zip&#125; $&#123;address.city&#125; $&#123;address.state&#125;<p class="paragraph"/>&#60;country:name object=<span class="java&#45;quote">"$&#123;address.country&#125;"</span>/&#62;</pre></div><p class="paragraph"/>During data entry, a select box should be used. The box should display each available country:<p class="paragraph"/><div class="code"><pre>&#8230;
 &#60;country:select name=<span class="java&#45;quote">"country.id"</span> value=<span class="java&#45;quote">"$&#123;fieldValue(bean:address,field:'country.id')&#125;"</span> noSelection=<span class="java&#45;quote">"&#91;'':'select please:'&#93;"</span>/&#62;
