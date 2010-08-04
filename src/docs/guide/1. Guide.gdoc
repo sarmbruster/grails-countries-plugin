@@ -7,7 +7,7 @@ In short, the plugin offers:
 * i18n for continent and country names (for now, only en and de locales)
 * tags for simple usage of 
 ** localized names
-** select boxes: for all countries, for all continents, for all countries of a continent or for a defined set of countries
+** select boxes: for all countries, for all continents, for all countries of a continent or for a defined set of countries. The select box contents are automatically sorted by the the localized country/continent name.
 
 In future this plugin will be extended, some ideas are
 
