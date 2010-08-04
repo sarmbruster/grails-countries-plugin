@@ -27,29 +27,29 @@
         <div id="content">
             <h1><a name="1. Guide">1. Guide</a></h1><h2>Introduction</h2>
 A common requirement in many applications is to deal with countries and/or continents. The plugin's goal is to apply the DRY principle to these requirements.<p class="paragraph"/>In short, the plugin offers:
-<ol>
+<ul class="star">
 <li>populated domain classes for countries and continents</li>
 <li>i18n for continent and country names (for now, only en and de locales)</li>
 <li>tags for simple usage of</li>
-<ol>
+<ul class="star">
 <li>localized names</li>
 <li>select boxes: for all countries, for all continents, for all countries of a continent or for a defined set of countries</li>
-</ol></ol><p class="paragraph"/>In future this plugin will be extended, some ideas are
-<ol>
+</ul></ul><p class="paragraph"/>In future this plugin will be extended, some ideas are
+<ul class="star">
 <li>provide a IP address -&#62; country conversion</li>
 <li>add more languages</li>
 <li>provide templates for scaffolding</li>
-</ol><p class="paragraph"/>The plugin is licensend under the <a href="http://sam.zoy.org/wtfpl/" target="blank">WTFPL</a>.<p class="paragraph"/><h2>Installation</h2><p class="paragraph"/>Installation is done like every other plugin:
+</ul><p class="paragraph"/>The plugin is licensend under the <a href="http://sam.zoy.org/wtfpl/" target="blank">WTFPL</a>.<p class="paragraph"/><h2>Installation</h2><p class="paragraph"/>Installation is done like every other plugin:
 <div class="code"><pre>grails install&#45;plugin countries</pre></div><p class="paragraph"/>When starting up the application, the Country and Continent domain classes are populated during the bootstrapping process.<p class="paragraph"/><h2>Domain classes</h2>
 The plugin contains two domain classes <code>grails.plugin.countries.Country</code> and <code>grails.plugin.countries.Continent</code>. The are related to each other with a bidirectional 1:n relation, so each continent has multiple countries and each country refers to one continent. The Country domain class holds the 2- and 3 letter codes of ISO 3166 as well as the name of country's capital. N.B. the country name itself is not stored in the domain class but is available in i18n properties files by following the convention <code>country.&#60;3 letter code&#62;</code>. So when e.g. lookup up localized names for Germany, you have to use property <code>country.GER</code>. The same applies for continents. Since there seems no standard abbreviation for continents the plugin uses:
-<ol>
+<ul class="star">
 <li>afa: Afrika</li>
 <li>asa: Asia</li>
 <li>aus: Australia</li>
 <li>eur: Europe</li>
 <li>nam: North America</li>
 <li>sam: South America</li>
-</ol><p class="paragraph"/>The domainclasses are populated during Grails' bootstrap process, so we have 190 countries for now.
+</ul><p class="paragraph"/>The domainclasses are populated during Grails' bootstrap process, so we have 190 countries for now.
 <blockquote class="warning">
 The author cannot assure that the country data is 100% accurate. If a country is missing in the list, or any errors are found, please file a JIRA.
 </blockquote><p class="paragraph"/><h2>TagLib</h2>
