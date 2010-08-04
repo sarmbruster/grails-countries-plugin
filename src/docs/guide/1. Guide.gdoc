@@ -3,17 +3,17 @@ A common requirement in many applications is to deal with countries and/or conti
 
 In short, the plugin offers:
 
-# populated domain classes for countries and continents
-# i18n for continent and country names (for now, only en and de locales)
-# tags for simple usage of 
-## localized names
-## select boxes: for all countries, for all continents, for all countries of a continent or for a defined set of countries
+* populated domain classes for countries and continents
+* i18n for continent and country names (for now, only en and de locales)
+* tags for simple usage of 
+** localized names
+** select boxes: for all countries, for all continents, for all countries of a continent or for a defined set of countries
 
 In future this plugin will be extended, some ideas are
 
-# provide a IP address -> country conversion
-# add more languages
-# provide templates for scaffolding
+* provide a IP address -> country conversion
+* add more languages
+* provide templates for scaffolding
 
 The plugin is licensend under the [WTFPL|http://sam.zoy.org/wtfpl/].
 
@@ -28,12 +28,12 @@ When starting up the application, the Country and Continent domain classes are p
 
 h2. Domain classes
 The plugin contains two domain classes @grails.plugin.countries.Country@ and @grails.plugin.countries.Continent@. The are related to each other with a bidirectional 1:n relation, so each continent has multiple countries and each country refers to one continent. The Country domain class holds the 2- and 3 letter codes of ISO 3166 as well as the name of country's capital. N.B. the country name itself is not stored in the domain class but is available in i18n properties files by following the convention @country.<3 letter code>@. So when e.g. lookup up localized names for Germany, you have to use property @country.GER@. The same applies for continents. Since there seems no standard abbreviation for continents the plugin uses:
-# afa: Afrika
-# asa: Asia
-# aus: Australia
-# eur: Europe
-# nam: North America
-# sam: South America
+* afa: Afrika
+* asa: Asia
+* aus: Australia
+* eur: Europe
+* nam: North America
+* sam: South America
 
 The domainclasses are populated during Grails' bootstrap process, so we have 190 countries for now.
 {warning:title=Warning}
