@@ -18,7 +18,7 @@ h2. Description
 
 Attributes
 
-* @object@ (required) - Either a instance of {{Country}} or {{Continent}}.
+* @object@ (required) - Either a instance of @Country@ or @Continent@.
 * @locale@ (optional) - The locale used to get the country/continent's name, defaults to the locale of the current request
 
 h2. Source

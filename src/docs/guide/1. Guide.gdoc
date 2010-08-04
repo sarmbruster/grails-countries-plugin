@@ -27,7 +27,7 @@ grails install-plugin countries
 When starting up the application, the Country and Continent domain classes are populated during the bootstrapping process.
 
 h2. Domain classes
-The plugin contains two domain classes {{grails.plugin.countries.Country}} and {{grails.plugin.countries.Continent}}. The are related to each other with a bidirectional 1:n relation, so each continent has multiple countries and each country refers to one continent. The Country domain class holds the 2- and 3 letter codes of ISO 3166 as well as the name of country's capital. N.B. the country name itself is not stored in the domain class but is available in i18n properties files by following the convention {{country.<3 letter code>}}. So when e.g. lookup up localized names for Germany, you have to use property {{country.GER}}. The same applies for continents. Since there seems no standard abbreviation for continents the plugin uses:
+The plugin contains two domain classes @grails.plugin.countries.Country@ and @grails.plugin.countries.Continent@. The are related to each other with a bidirectional 1:n relation, so each continent has multiple countries and each country refers to one continent. The Country domain class holds the 2- and 3 letter codes of ISO 3166 as well as the name of country's capital. N.B. the country name itself is not stored in the domain class but is available in i18n properties files by following the convention @country.<3 letter code>@. So when e.g. lookup up localized names for Germany, you have to use property @country.GER@. The same applies for continents. Since there seems no standard abbreviation for continents the plugin uses:
 # afa: Afrika
 # asa: Asia
 # aus: Australia
@@ -44,7 +44,7 @@ h2. TagLib
 The plugin comes with a taglib providing easy access to localized filenames and for country/continent related select boxes. For details, see the tag description in the left hand frame.
 
 h2. Example
-This short example demonstrates the usage and the capabilities of the plugin. It is assumed that you have created some grails project. A domain class {{Address}} uses {{Country}} :
+This short example demonstrates the usage and the capabilities of the plugin. It is assumed that you have created some grails project. A domain class @Address@ uses @Country@ :
 {code:xml}class Address {
 	String street
 	String no
@@ -55,7 +55,7 @@ This short example demonstrates the usage and the capabilities of the plugin. It
 }
 {code}
 
-Assume a gsp used for creating address labels, the controller exposes a {{Address}} instance using {{address}}:
+Assume a gsp used for creating address labels, the controller exposes a @Address@ instance using @address@:
 
 {code}
 Placeholder for name
