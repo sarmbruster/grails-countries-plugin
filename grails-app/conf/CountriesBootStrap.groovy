@@ -33,17 +33,17 @@ class CountriesBootStrap {
     def setupCountries(ServletContext servletContext) {
 
         def domains = [:]
-        servletContext.getResourceAsStream("WEB-INF/domains.csv").eachLine {
+        getResourceAsStream(servletContext, "WEB-INF/domains.csv").eachLine {
             def (num, domain) = it.tokenize(",")
             domains[num] = domain
         }
         def capitals = [:]
-        servletContext.getResourceAsStream("WEB-INF/capitals.csv").eachLine {
+        getResourceAsStream(servletContext, "WEB-INF/capitals.csv").eachLine {
             def (num, capital) = it.tokenize(",")
             capitals[num] = capital
         }
 
-        def countries = servletContext.getResourceAsStream("WEB-INF/countries.csv").text
+        def countries = getResourceAsStream(servletContext, "WEB-INF/countries.csv").text
         countries.eachLine { line ->
             def fields = line.tokenize()
             log.debug "importing: $fields"
@@ -57,10 +57,16 @@ class CountriesBootStrap {
                     )
             assert country.save(), "$fields: $country.errors.allErrors"
             log.debug "imported ${country.dump()}"
-
         }
-
         log.error "imported ${Country.count()} countries"
+    }
+
+    /**
+     * there seems to be different behaviour in the root dir for getResourceAsStream when doing run-app compared to test-app
+     * wrapping this to prevent failures
+     */
+    def getResourceAsStream(ServletContext servletContext, String res) {
+        servletContext.getResourceAsStream(res) ?: servletContext.getResourceAsStream("web-app/$res")
     }
 
 }
