@@ -14,8 +14,8 @@ class Country {
         shortKey maxSize:2, unique:true
         key maxSize:3, unique:true
         iso3166Number maxSize:3, unique:true
-        domain maxSize: 5
-        capital: maxSize:50
+        domain maxSize: 5, nullable:true
+        capital maxSize:50, nullable:true
     }
 
     static mapping = {
