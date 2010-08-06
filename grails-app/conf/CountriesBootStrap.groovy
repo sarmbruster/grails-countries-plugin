@@ -9,12 +9,6 @@ class CountriesBootStrap {
     def init = { servletContext ->
         if (Continent.count()==0) {
             [
-/*                    ['asa'],
-                    ['eur'],
-                    ['nam'],
-                    ['sam'],
-                    ['aus'],
-                    ['afa'],*/
                     ['AS'],
                     ['EU'],
                     ['AF'],
