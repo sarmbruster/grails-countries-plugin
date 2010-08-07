@@ -1,0 +1,18 @@
+h1. fetch-country-list 
+
+h2. Purpose
+
+fetch a list of all countries in the world and store it in your application
+
+h2. Examples
+
+{code:sh}
+grails fetch-country-list
+{code}
+
+h2. Description
+
+Fetch the country list from [wikipedia|http://en.wikipedia.org/wiki/List_of_countries_by_continent_%28data_file%29], convert it into csv format and store it in @$basedir/web-app@. The list of domains and capitals are copied over from the plugin contents.
+These three csv files are picked up during bootstrapping and imported into the database if the respective tables are empty.
+
+Normally this script should be run only once.
