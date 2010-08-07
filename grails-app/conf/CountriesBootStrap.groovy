@@ -3,6 +3,7 @@ import grails.plugins.countries.Country
 import grails.plugins.countries.Continent
 import grails.plugins.countries.Country
 import javax.servlet.ServletContext
+import grails.util.Environment
 
 class CountriesBootStrap {
 
@@ -33,17 +34,17 @@ class CountriesBootStrap {
     def setupCountries(ServletContext servletContext) {
 
         def domains = [:]
-        getResourceAsStream(servletContext, "WEB-INF/domains.csv").eachLine {
+        getResourceAsStream(servletContext, "domains.csv").eachLine {
             def (num, domain) = it.tokenize(",")
             domains[num] = domain
         }
         def capitals = [:]
-        getResourceAsStream(servletContext, "WEB-INF/capitals.csv").eachLine {
+        getResourceAsStream(servletContext, "capitals.csv").eachLine {
             def (num, capital) = it.tokenize(",")
             capitals[num] = capital
         }
 
-        def countries = getResourceAsStream(servletContext, "WEB-INF/countries.csv").text
+        def countries = getResourceAsStream(servletContext, "countries.csv").text
         countries.eachLine { line ->
             def fields = line.tokenize()
             log.debug "importing: $fields"
@@ -58,7 +59,7 @@ class CountriesBootStrap {
             assert country.save(), "$fields: $country.errors.allErrors"
             log.debug "imported ${country.dump()}"
         }
-        log.error "imported ${Country.count()} countries"
+        log.info "imported ${Country.count()} countries"
     }
 
     /**
@@ -66,7 +67,9 @@ class CountriesBootStrap {
      * wrapping this to prevent failures
      */
     def getResourceAsStream(ServletContext servletContext, String res) {
-        servletContext.getResourceAsStream(res) ?: servletContext.getResourceAsStream("web-app/$res")
+        def resource = (Environment.current == Environment.TEST) ? new FileInputStream("web-app/$res") : servletContext.getResourceAsStream(res)
+        assert resource, "could not find $res, consider running 'grails fetch-country-list'" 
+        return resource
     }
 
 }
