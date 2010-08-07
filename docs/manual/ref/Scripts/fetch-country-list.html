@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <title>countries 0.2 - Reference Documentation</title>
+        <link rel="stylesheet" href="../../css/ref.css" type="text/css" media="screen" title="Ref" charset="utf-8"/>
+    </head>
+    <body class="body">
+    <h1>fetch-country-list </h1><p class="paragraph"/><h2>Purpose</h2><p class="paragraph"/>fetch a list of all countries in the world and store it in your application<p class="paragraph"/><h2>Examples</h2><p class="paragraph"/><div class="code"><pre>grails fetch&#45;country&#45;list</pre></div><p class="paragraph"/><h2>Description</h2><p class="paragraph"/>Fetch the country list from <a href="http://en.wikipedia.org/wiki/List_of_countries_by_continent_%28data_file%29" target="blank">wikipedia</a>, convert it into csv format and store it in <code>$basedir/web-app</code>. The list of domains and capitals are copied over from the plugin contents.
+These three csv files are picked up during bootstrapping and imported into the database if the respective tables are empty.<p class="paragraph"/>Normally this script should be run only once.
+
+    </body>
+</html>
