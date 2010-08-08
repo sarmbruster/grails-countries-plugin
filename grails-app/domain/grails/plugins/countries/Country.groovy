@@ -20,6 +20,7 @@ class Country {
 
     static mapping = {
     	cache usage:'read-only'
+		key column:'ckey'
     }
 
 }

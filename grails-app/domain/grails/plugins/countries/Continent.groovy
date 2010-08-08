@@ -14,6 +14,7 @@ class Continent {
 
     static mapping = {
     	cache usage:'read-only'
+		key column: 'ckey' // some db's don't like column name 'key'
     }
     
 }
