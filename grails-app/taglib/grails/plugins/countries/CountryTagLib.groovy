@@ -1,6 +1,7 @@
 package grails.plugins.countries
 
 import org.springframework.web.servlet.support.RequestContextUtils as RCU
+import java.text.Collator
 
 class CountryTagLib {
 
@@ -9,9 +10,17 @@ class CountryTagLib {
     def name = { attrs ->
         def object = getRequiredAttribute(attrs, "object", "name")
         def locale = attrs.locale ?: RCU.getLocale(request)
-        def prefix = object.getClass().simpleName.toLowerCase()
+
+        def prefix = null
+        switch (object) {
+            case Continent: prefix = "continent"; break;
+            case Country: prefix = "country"; break;
+            default: break;
+        }
+        
         assert prefix
         def code = "$prefix.${object?.key}"
+        log.debug "code $code"
         out << message(code: code, default: object?.key, locale:locale)
     }
 
@@ -24,7 +33,7 @@ class CountryTagLib {
 
     def select = { attrs ->
         def locale = attrs.locale ?: RCU.getLocale(request)
-        log.error "locale $locale"
+        log.debug "locale $locale"
         def list = attrs.from ?: Country.list()
         if (list instanceof Continent) {
             list = list.countries
@@ -42,7 +51,7 @@ class CountryTagLib {
     }
 
     protected SortedMap createSortedMap(def list, Locale locale) {
-        SortedMap map = new TreeMap() // forces ordering
+        SortedMap map = new TreeMap(Collator.getInstance(locale)) // forces ordering
         list.each {
             String localizedName = name(object: it, locale:locale)
             map[localizedName] = it.id
