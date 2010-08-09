@@ -8,6 +8,8 @@ import grails.util.Environment
 class CountriesBootStrap {
 
     def init = { servletContext ->
+
+        //org.hsqldb.util.DatabaseManager.main('-url' , "jdbc:hsqldb:mem:devDB")
         if (Continent.count()==0) {
             [
                     ['AS'],

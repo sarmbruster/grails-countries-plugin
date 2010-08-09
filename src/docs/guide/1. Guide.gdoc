@@ -17,6 +17,15 @@ In future this plugin will be extended, some ideas are
 
 The plugin is licensend under the [WTFPL|http://sam.zoy.org/wtfpl/].
 
+h3. authors and contributors
+
+The plugin is authored by Stefan Armbruster.
+
+Contributors:
+* Robert Fletcher: translation to Afrikaans (af)
+* Christopher Kolstad: translation to Norge (nb_NO)
+* Luxas Teixeira: translations to Spanish (es), French (fr), Italian (it), Portugese (pt_BR)
+
 h2. Installation
 
 Installation is done like every other plugin:
@@ -78,6 +87,11 @@ During data entry, a select box should be used. The box should display each avai
 {code}
 
 h2. release history
+* unreleased 0.2.1 ?:
+** added contributed language nb_NO, cheers to Christopher Kolstad
+** changed mapping of Country.key and Continent.key to 'ckey' in the database, since some db's don't like 'key' as a column name
+** introduced Region domain class: Country and Continent are now subclasses of Region
+** locale dependent sorting using Collators in Taglib
 * 0.2 2010-08-07:
 ** added languages: 
 *** af: contributed by Robert Fletcher
