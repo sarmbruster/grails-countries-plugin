@@ -33,7 +33,8 @@ Installation is done like every other plugin:
 grails install-plugin countries
 {code}
 
-When starting up the application, the Country and Continent domain classes are populated during the bootstrapping process. The list of available countries is loaded from web-app/WEB-INF/countries.csv. If your application needs only a subset of the complete list, copy countries.csv to your app's web-app/WEB-INF and remove countries out of scope.
+When starting up the application, the Country and Continent domain classes are populated during the bootstrapping process. The list of available countries is loaded from web-app/countries.csv, web-app/domains.csv and web-app/capitals.csv. If your application needs only a subset of the complete list, copy countries.csv to your app's web-app and remove countries out of scope.
+If you need the rebuild the complete country list, call 'grails fetch-country-list'.
 
 h2. Domain classes
 The plugin contains two domain classes @grails.plugin.countries.Country@ and @grails.plugin.countries.Continent@. The are related to each other with a bidirectional 1:n relation, so each continent has multiple countries and each country refers to one continent. The Country domain class holds the 2- and 3 letter codes of ISO 3166 as well as the name of country's capital. N.B. the country name itself is not stored in the domain class but is available in i18n properties files by following the convention @country.<3 letter code>@. So when e.g. lookup up localized names for Germany, you have to use property @country.GER@. The same applies for continents. Since there seems no standard abbreviation for continents the plugin uses:
