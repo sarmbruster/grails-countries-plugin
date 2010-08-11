@@ -11,17 +11,19 @@ class CountryTagLib {
         def object = getRequiredAttribute(attrs, "object", "name")
         def locale = attrs.locale ?: RCU.getLocale(request)
 
+		  def defaultValue = object ? object.key : (attrs.default ?: "default")
+
         def prefix = null
+        object = object ? Region.get(object.id) : null // since "object instanceOf Continent" fails in case of proxies, we must work around this
         switch (object) {
             case Continent: prefix = "continent"; break;
             case Country: prefix = "country"; break;
             default: break;
         }
         
-        assert prefix
         def code = "$prefix.${object?.key}"
         log.debug "code $code"
-        out << message(code: code, default: object?.key, locale:locale)
+        out << message(code: code, default: defaultValue, locale:locale)
     }
 
     def selectContinent = { attrs ->
