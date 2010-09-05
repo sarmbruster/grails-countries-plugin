@@ -1,6 +1,6 @@
 package grails.plugins.countries
 
-class Region {
+class Region implements Serializable {
 
     String key // iso3166 3 letter code
 
