@@ -1,6 +1,10 @@
 package grails.plugins.countries
 
-class Region implements Serializable {
+import org.springframework.context.MessageSourceResolvable
+
+class Region implements Serializable, MessageSourceResolvable {
+
+    static transients = ["codes", "arguments", "defaultMessage"]
 
     String key // iso3166 3 letter code
 
@@ -13,4 +17,19 @@ class Region implements Serializable {
 		key column:'ckey'
     }
     
-}   
+    String[] getCodes() {
+        ["${getClass().simpleName.toLowerCase()}.$key"] as String[]
+    }
+
+    Object[] getArguments() {
+        [] as Object[]
+    }
+
+    String getDefaultMessage() {
+        "${getClass().name}: $key"
+    }
+
+    String toString() {
+
+    }
+}
