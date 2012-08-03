@@ -2,7 +2,7 @@ package grails.plugins.countries
 
 import grails.test.*
 
-class CountryTagLibTests extends TagLibUnitTestCase {
+class CountryTagLibSpec extends TagLibUnitTestCase {
     protected void setUp() {
         super.setUp()
         tagLib.metaClass.message = { map-> map.code}

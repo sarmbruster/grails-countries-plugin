@@ -6,3 +6,6 @@ target
 web-app/css
 web-app/images
 web-app/js
+prodDb.*
+*.ipr
+*.iml
