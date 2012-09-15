@@ -30,7 +30,8 @@ grails.project.dependency.resolution = {
     }
     plugins {
         test ":spock:0.6"
-        // runtime ":hibernate:$grailsVersion"
+        test ":build-test-data:2.0.3"
+        test ":hibernate:$grailsVersion"
         // runtime ":tomcat:$grailsVersion"
     }
 }

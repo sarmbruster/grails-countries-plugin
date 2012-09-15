@@ -1,91 +1,83 @@
 package grails.plugins.countries
 
-import grails.test.*
+import grails.buildtestdata.mixin.Build
+import grails.test.mixin.Mock
+import grails.test.mixin.TestFor
+import spock.lang.Specification
 
-class CountryTagLibSpec extends TagLibUnitTestCase {
-    protected void setUp() {
-        super.setUp()
+@TestFor(CountryTagLib)
+@Build([Region, Country, Continent])
+class CountryTagLibSpec extends Specification {
+
+    def setup() {
         tagLib.metaClass.message = { map-> map.code}
-        tagLib.metaClass.getG = { -> [
-                select: {
-                    it.from.inject([:]) { map, item ->
-                        map[item[it.optionKey].toString()] = item[it.optionValue]
-                        map
-                    }
-                }
-            ]
+    }
+
+    def "test <name> with country attribute"() {
+        when:
+        def object = clazz.build(map)
+        object.save()
+
+        then:
+        applyTemplate('<country:name object="${obj}"/>', [obj: object]) == result
+
+        where:
+        clazz     | map          | result
+        Country   | [key: 'abc'] | "country.abc"
+        Continent | [key: 'abc'] | "continent.abc"
+
+    }
+
+    def "test <select> tag in its simplest form"() {
+        setup:
+        def continent = Continent.build()
+        ['abc','def'].eachWithIndex { item, index ->
+            def c = Country.build(id: index, key:item, continent:continent)
+            c.save()
+        }
+
+        when:
+        def s = applyTemplate('<country:select name="countrySelect"/>')
+
+        then:
+        Country.list().every {
+            s =~ /<option value="${it.id}" >country.${it.key}<\/option>/
         }
     }
 
+    def "test <select> tag with a continent as from attribute"() {
 
-    protected void tearDown() {
-        super.tearDown()
+        setup:
+        assert Continent.count()==0
+        assert Country.count()==0
+        def continent1 = Continent.build(key: 'c1')
+        def continent2 = Continent.build(key: 'c2')
+        def country1 = Country.build(key:'abc', continent: continent1)
+        def country2 = Country.build(key:'def', continent: continent1)
+        def country3 = Country.build(key:'gih', continent: continent2)
+
+        when:
+        def s = applyTemplate('<country:select name="countrySelect" from="${continent}"/>', [continent: continent1])
+
+        then:
+        s =~ /<option value="${country1.id}" >country.${country1.key}<\/option>/
+        s =~ /<option value="${country2.id}" >country.${country2.key}<\/option>/
+        !(s =~ /<option value="${country3.id}" >country.${country3.key}<\/option>/)
     }
 
-    void testNameWithCountry() {
-        tagLib.name([object: new Country(key:'abc')])
-        assertEquals "country.abc", tagLib.out.toString()
+    def "test <selectContinent> tag"() {
+
+        setup:
+        assert Continent.count()==0
+        def continent1 = Continent.build(key: 'c1')
+        def continent2 = Continent.build(key: 'c2')
+
+        when:
+        def s = applyTemplate('<country:selectContinent name="countrySelect" />')
+
+        then:
+        s =~ /<option value="${continent1.id}" >continent.${continent1.key}<\/option>/
+        s =~ /<option value="${continent2.id}" >continent.${continent2.key}<\/option>/
     }
 
-    void testNameWithContinent() {
-        tagLib.name([object: new Continent(key:'abc')])
-        assertEquals "continent.abc", tagLib.out.toString()
-    }
-
-    void testSelectAllCountries() {
-
-        mockDomain Country, [
-                new Country(id:1, key:'abc'),
-                new Country(id:2, key:'def')
-        ]
-
-        //println tagLib.g
-        tagLib.select([:])
-
-        String out = tagLib.out.toString()
-        assert out =~ /2:.*country.def/
-        assert out =~ /1:.*country.abc/ //TODO: change to 2:country.def when   http://jira.codehaus.org/browse/GRAILS-6267 is fixed
-    }
-
-    void testSelectCountriesFromContinent() {
-
-        def continent1 = new Continent(id:1, key:'cont1')
-        def continent2 = new Continent(id:2, key:'cont2')
-        mockDomain Continent, [
-                continent1,
-                continent2,
-        ]
-        def country1 = new Country(id:1, key:'abc')
-        def country2 = new Country(id:2, key:'def')
-        def country3 = new Country(id:3, key:'gih')
-        mockDomain Country, [ country1, country2, country3 ]
-        continent1.addToCountries(country1)
-        continent1.addToCountries(country2)
-        continent2.addToCountries(country3)
-
-        //println tagLib.g
-        tagLib.select([from:continent1])
-
-        String out = tagLib.out
-        assert out =~ /2:.*country.def/
-        assert out =~ /1:.*country.abc/ //TODO: change to 2:country.def when   http://jira.codehaus.org/browse/GRAILS-6267 is fixed
-        assertFalse  out.contains("gih")
-
-    }
-
-
-    void testSelectContinent() {
-
-        mockDomain Continent, [
-                new Continent(id:1, key:'abc'),
-                new Continent(id:2, key:'def')
-        ]
-
-        //println tagLib.g
-        tagLib.selectContinent([:])
-
-        String out = tagLib.out
-        assert out =~ /2:.*continent.def/
-        assert out =~ /1:.*continent.abc/ //TODO: change to 2:country.def when   http://jira.codehaus.org/browse/GRAILS-6267 is fixed
-    }
 }
