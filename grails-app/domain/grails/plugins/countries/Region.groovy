@@ -30,6 +30,6 @@ class Region implements Serializable, MessageSourceResolvable {
     }
 
     String toString() {
-
+        key
     }
 }
