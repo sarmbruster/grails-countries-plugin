@@ -158,7 +158,7 @@ NA      AN      ANT     530     Netherlands Antilles
 NA      CW      CUW     531     Curaçao
 NA      AW      ABW     533     Aruba
 NA      SX      SXM     534     Sint Maarten (Netherlands)
-NA      BQ      BES     535     Bonaire, Saint Eustatius and Saba
+NA      BQ      BES     535     Bonaire, Sint Eustatius and Saba
 OC      NC      NCL     540     New Caledonia
 OC      VU      VUT     548     Vanuatu, Republic of
 OC      NZ      NZL     554     New Zealand
@@ -215,6 +215,7 @@ AF      SO      SOM     706     Somalia, Somali Republic
 AF      ZA      ZAF     710     South Africa, Republic of
 AF      ZW      ZWE     716     Zimbabwe, Republic of
 EU      ES      ESP     724     Spain, Kingdom of
+AF      SS      SSD     728     South Sudan
 AF      EH      ESH     732     Western Sahara
 AF      SD      SDN     736     Sudan, Republic of
 SA      SR      SUR     740     Suriname, Republic of
@@ -238,7 +239,7 @@ NA      TC      TCA     796     Turks and Caicos Islands
 OC      TV      TUV     798     Tuvalu
 AF      UG      UGA     800     Uganda, Republic of
 EU      UA      UKR     804     Ukraine
-EU      MK      MKD     807     Macedonia, Republic of
+EU      MK      MKD     807     Macedonia, The Former Yugoslav Republic of
 AF      EG      EGY     818     Egypt, Arab Republic of
 EU      GB      GBR     826     United Kingdom of Great Britain & Northern Ireland
 EU      GG      GGY     831     Guernsey, Bailiwick of
