@@ -9,7 +9,6 @@ class Country extends Region {
     String capital
 
     static constraints = {
-        //key maxSize: 3, unique:true
         shortKey maxSize:2, unique:true
         iso3166Number maxSize:3, unique:true
         domain maxSize: 5, nullable:true
@@ -18,7 +17,6 @@ class Country extends Region {
 
     static mapping = {
     	cache usage:'read-only'
-        //key column:'ckey'
     }
 
 }
