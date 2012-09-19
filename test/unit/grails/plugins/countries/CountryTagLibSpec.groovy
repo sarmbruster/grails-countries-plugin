@@ -6,7 +6,7 @@ import grails.test.mixin.TestFor
 import spock.lang.Specification
 
 @TestFor(CountryTagLib)
-@Build([Region, Country, Continent])
+@Build([Country, Continent])
 class CountryTagLibSpec extends Specification {
 
     def setup() {

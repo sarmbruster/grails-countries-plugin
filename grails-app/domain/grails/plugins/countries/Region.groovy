@@ -2,7 +2,7 @@ package grails.plugins.countries
 
 import org.springframework.context.MessageSourceResolvable
 
-class Region implements Serializable, MessageSourceResolvable {
+abstract class Region implements Serializable, MessageSourceResolvable {
 
     static transients = ["codes", "arguments", "defaultMessage"]
 
