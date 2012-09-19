@@ -4,7 +4,7 @@ A common requirement in many applications is to deal with countries and/or conti
 In short, the plugin offers:
 
 * populated domain classes for countries and continents
-* i18n for continent and country names (for now, only en and de locales)
+* i18n for continent and country names (for now, af, de, en, es fr, it, nb_NO and pt_BR locales)
 * tags for simple usage of 
 ** localized names
 ** select boxes: for all countries, for all continents, for all countries of a continent or for a defined set of countries. The select box contents are automatically sorted by the the localized country/continent name.
@@ -15,7 +15,7 @@ In future this plugin will be extended, some ideas are
 * add more languages
 * provide templates for scaffolding
 
-The plugin is licensend under the [WTFPL|http://sam.zoy.org/wtfpl/].
+The plugin is licensend under the Apache Public license.
 
 h3. authors and contributors
 
@@ -37,7 +37,7 @@ When starting up the application, the Country and Continent domain classes are p
 If you need the rebuild the complete country list, call 'grails fetch-country-list'.
 
 h2. Domain classes
-The plugin contains two domain classes @grails.plugin.countries.Country@ and @grails.plugin.countries.Continent@. The are related to each other with a bidirectional 1:n relation, so each continent has multiple countries and each country refers to one continent. The Country domain class holds the 2- and 3 letter codes of ISO 3166 as well as the name of country's capital. N.B. the country name itself is not stored in the domain class but is available in i18n properties files by following the convention @country.<3 letter code>@. So when e.g. lookup up localized names for Germany, you have to use property @country.GER@. The same applies for continents. Since there seems no standard abbreviation for continents the plugin uses:
+The plugin contains three domain classes. @grails.plugin.countries.Region@ is an abstract base class for @grails.plugin.countries.Country@ and @grails.plugin.countries.Continent@. continent and country are related to each other with a bidirectional 1:n relation, so each continent has multiple countries and each country refers to one continent. The Country domain class holds the 2- and 3 letter codes of ISO 3166 as well as the name of country's capital. N.B. the country name itself is not stored in the domain class but is available in i18n properties files by following the convention @country.<3 letter code>@. So when e.g. lookup up localized names for Germany, you have to use property @country.GER@. The same applies for continents. Since there seems no standard abbreviation for continents the plugin uses:
 * AF: Afrika
 * AS: Asia
 * OC: Australia
@@ -46,7 +46,7 @@ The plugin contains two domain classes @grails.plugin.countries.Country@ and @gr
 * SA: South America
 * AN: Antarctica
 
-The domainclasses are populated during Grails' bootstrap process, so we have 246 countries for now.
+The domainclasses are populated during Grails' bootstrap process, so we have 252 countries for now.
 {warning:title=Warning}
 The author cannot assure that the country data is 100% accurate. If a country is missing in the list, or any errors are found, please file a JIRA.
 {warning} 
@@ -88,7 +88,12 @@ During data entry, a select box should be used. The box should display each avai
 {code}
 
 h2. release history
-* unreleased 0.2.1 ?:
+* 0.4.0 2012-09-19
+** upgrade to Grails 2.1.0
+** adding spock tests for taglib
+** upgrade country data from wikipedia
+** introduced Region as abstract base class
+* 0.2.1
 ** added contributed language nb_NO, cheers to Christopher Kolstad
 ** changed mapping of Country.key and Continent.key to 'ckey' in the database, since some db's don't like 'key' as a column name
 ** introduced Region domain class: Country and Continent are now subclasses of Region
