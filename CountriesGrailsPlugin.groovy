@@ -14,7 +14,7 @@ class CountriesGrailsPlugin {
     // TODO Fill in these fields
     def author = "Stefan Armbruster"
     def authorEmail = "stefan.armbruster@netjay.de"
-    def title = "Plugin to deal with contries and continents"
+    def title = "Countries Plugin"
     def description = 'Countries - a way to deal with continents and countries in Grails applications.'
 
     // URL to the plugin's documentation
