@@ -14,13 +14,8 @@ class CountriesGrailsPlugin {
     // TODO Fill in these fields
     def author = "Stefan Armbruster"
     def authorEmail = "stefan.armbruster@netjay.de"
-    def title = "Plugins to deal with contries and continents"
-    def description = '''\\
-The countries plugins provides:
-* populated domains classes for countries and continents
-* i18n files for countries and continents, for now only in en and de, other contributions are welcome
-* taglib
-'''
+    def title = "Plugin to deal with contries and continents"
+    def description = 'Countries - a way to deal with continents and countries in Grails applications.'
 
     // URL to the plugin's documentation
     def documentation = "http://grails.org/plugin/countries"

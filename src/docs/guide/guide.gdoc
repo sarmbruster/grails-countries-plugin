@@ -88,7 +88,7 @@ During data entry, a select box should be used. The box should display each avai
 {code}
 
 h2. release history
-* 0.4.0 2012-09-19
+* 0.4.0 2012-09-20
 ** upgrade to Grails 2.1.0
 ** adding spock tests for taglib
 ** upgrade country data from wikipedia
