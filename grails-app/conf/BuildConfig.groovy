@@ -27,6 +27,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         // runtime 'mysql:mysql-connector-java:5.1.5'
+        build 'org.ccil.cowan.tagsoup:tagsoup:1.2.1'
     }
     plugins {
         test ":spock:0.6"

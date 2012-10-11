@@ -5,8 +5,7 @@ target(main: "fetch the country list from wikipedia and convert it to csv") {
     URL url = new URL("http://en.wikipedia.org/wiki/List_of_countries_by_continent_%28data_file%29")
     def countriesCsv = "$basedir/web-app/countries.csv"
     url.withReader { reader ->
-        def slurper = new XmlSlurper()
-        slurper.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false)
+        def slurper = new XmlSlurper(new org.ccil.cowan.tagsoup.Parser())
         def html = slurper.parse(reader)
         def countryList =  html.'**'.find {it.@id=='mw-content-text'}.pre.toString()
 
