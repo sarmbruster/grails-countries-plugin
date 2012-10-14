@@ -1,7 +1,6 @@
 package grails.plugins.countries
 
 import grails.buildtestdata.mixin.Build
-import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
@@ -32,7 +31,7 @@ class CountryTagLibSpec extends Specification {
         setup:
         def continent = Continent.build()
         ['abc','def'].eachWithIndex { item, index ->
-            def c = Country.build(id: index, key:item, continent:continent)
+            def c = Country.build(id: index, key:item, continents:[continent])
             c.save()
         }
 
@@ -52,9 +51,13 @@ class CountryTagLibSpec extends Specification {
         assert Country.count()==0
         def continent1 = Continent.build(key: 'c1')
         def continent2 = Continent.build(key: 'c2')
-        def country1 = Country.build(key:'abc', continent: continent1)
-        def country2 = Country.build(key:'def', continent: continent1)
-        def country3 = Country.build(key:'gih', continent: continent2)
+        def country1 = Country.build(key:'abc')
+        def country2 = Country.build(key:'def')
+        def country3 = Country.build(key:'gih')
+        continent1.addToCountries(country1)
+        continent1.addToCountries(country2)
+        continent2.addToCountries(country3)
+
 
         when:
         def s = applyTemplate('<country:select name="countrySelect" from="${continent}"/>', [continent: continent1])

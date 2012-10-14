@@ -53,6 +53,14 @@ class DataCompletenessSpec extends IntegrationSpec {
 
     }
 
+    def "Turkey should have multiple continents"() {
+        when:
+        def turkey = Country.findByKey("TUR")
+
+        then:
+        turkey.continents.size() == 2
+    }
+
     protected List checkListForLocale(List<Region> list, prefix, locale) {
         def failed = []
         list.each { region ->

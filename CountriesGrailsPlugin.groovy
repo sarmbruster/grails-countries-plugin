@@ -1,7 +1,7 @@
 
 class CountriesGrailsPlugin {
     // the plugin version
-    def version = "0.4"
+    def version = "0.5-SNAPSHOT"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3 > *"
     // the other plugins this plugin depends on

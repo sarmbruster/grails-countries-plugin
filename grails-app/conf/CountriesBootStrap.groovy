@@ -56,11 +56,11 @@ class CountriesBootStrap {
                     domain: domains.get(fields[3], null),
                     shortKey: fields[1],
                     key: fields[2],
-                    capital: capitals.get(fields[3], null),
-                    continent: Continent.findByKey(fields[0])
+                    capital: capitals.get(fields[3], null)
             )
+            country.addToContinents(Continent.findByKey(fields[0]))
 
-            log.warn "imported ${country.dump()}"
+            log.debug "imported ${country.dump()}"
         }
         log.info "imported ${Country.count()} countries"
     }

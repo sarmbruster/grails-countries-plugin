@@ -2,7 +2,8 @@ package grails.plugins.countries
 
 class Country extends Region {
 
-    Continent continent
+    static hasMany = [continents: Continent]
+    static belongsTo = Continent
     String shortKey // iso3166 2 letter code
     String iso3166Number
     String domain
